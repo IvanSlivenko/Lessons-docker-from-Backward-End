@@ -4,7 +4,58 @@ https://youtu.be/Pi2f9DjFeaE?list=PLtPlYtGpRnJAnXq_6zGHC3VNh5e03Ucud
 
 ---------------------------------------------------- docker in windows 18 : 16
 
+wsl --install
+wsl --version
+docker --version
 
+docker ps
+
+docker hub in brawser
+
+nginx
+---------------------------------------------------- розгортаємо alpine3.22-perl
+docker pull nginx:alpine3.22-perl
+docker image ls
+
+
+---------------------------------------------------- прокидаємо порти 8080:80 alpine3.22-perl
+docker run --name some-nginx -d -p 8080:80 nginx:alpine3.22-perl
 
 ----------------------------------------------
 00 : 19 : 22
+
+
+--------------------------------------------------------------- Lesson 2
+https://youtu.be/C5fTg46BaGw?list=PLtPlYtGpRnJAnXq_6zGHC3VNh5e03Ucud
+
+
+------------------------------------ перелік запущених контейнерів 
+docker ps
+
+------------------------------------- перелік всіх контейнерів
+docker ps -a
+
+------------------------------------- зупинка контейнера
+
+docker stop some-nginx
+
+------------------------------------ видалення контейнера
+docker rm name or conteiner Id
+
+
+------------------------------------ видалення всіх незапущених контейнерів
+docker system prune -af
+
+----------------------------------------------------------------------------------- підключення volumes
+docker run --name my-site -p 80:80 -v ${PWD}\web_17-09-2025:/usr/share/nginx/html nginx:alpine3.22-perl
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------
+00 : 09 : 54
