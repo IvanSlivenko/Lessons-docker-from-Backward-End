@@ -1,0 +1,6 @@
+services:
+my-site:
+  image: nginx:alpine3.22-perl
+  ports:
+    - 80:80
+  volumes: - nginx-data:/usr/share/nginx/html
