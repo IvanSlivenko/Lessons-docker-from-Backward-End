@@ -96,7 +96,25 @@ docker-compouse ps
 --------------------------------------------------------------------------------- зупинка docker compouse
 docker-compose stop
 
-docker-compouse down
+docker-compose down
+
+
+-------------------------------------------
+
+
+
+-------------------------------------------
+services:
+  my-site:
+    image: nginx:alpine3.22-perl
+    ports:
+      - "80:80"
+    volumes:
+      - nginx-data:/usr/share/nginx/html
+
+volumes:
+  nginx-data:
+
 
 ------------------------------------------------------------------------------------
-00 : 09 : 57
+00 : 19 : 10

@@ -1,10 +1,36 @@
 services:
-  my-site:
-    image: nginx:alpine3.22-perl
+  database:
+    image: postgres:alpine
+    container_name: database
+    networks:
+      - local-postgres
+    restart: unless-stopped
     ports:
-      - "80:80"
+      - "5432:5432"
     volumes:
-      - nginx-data:/usr/share/nginx/html
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  pgadmin:
+    image: dpage/pgadmin4:9.5.0
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "5444:80"
+    restart: unless-stopped
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - local-postgres
+
+networks:
+  local-postgres:
 
 volumes:
-  nginx-data:
+  pgadmin_data:
+  database:
